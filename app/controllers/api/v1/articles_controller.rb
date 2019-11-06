@@ -13,7 +13,7 @@ class Api::V1::ArticlesController < ApplicationController
     private
 
     def article_params
-        params.require(:article).permit(:title, :author, :overview, :url, :image)
+        params.require(:article).permit(:title, :author, :overview, :url, :image, :category)
     end 
 
 

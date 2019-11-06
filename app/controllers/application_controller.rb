@@ -37,3 +37,30 @@ def encode_token(payload)
     render json: { message: 'Please log in' }, status: :unauthorized unless logged_in?
   end
 end
+
+
+# class ApplicationController < ActionController::API
+
+#     def secret
+#         'GloriousPegasus'
+#     end
+
+#     def token
+#         request.headers['Authorization'].to_s.split(' ')[1].to_s
+#     end
+
+#     def encode_token(user)
+#         payload = {user_id: user.id}
+#         JWT.encode(payload, secret, 'HS256')
+#     end
+
+#     def decoded_token
+#         JWT.decode(token, secret, true, {algorithm: 'HS256'})
+#     end
+
+#     def current_user
+#         user_id = decoded_token[0]['user_id']
+#         User.find(user_id)
+#     end
+
+# end
