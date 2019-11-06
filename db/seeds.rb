@@ -27,5 +27,4 @@ request = HTTParty.get("https://newsapi.org/v2/everything?q=traveler&domain=nyti
             @request_hash["articles"].each do |article|
             Article.create(title: article["title"], author: article["author"], overview: article["description"], url: article["url"], image: article["urlToImage"], category: "travel")
             puts article["title"]
-            puts "seeding is done"
         end 
