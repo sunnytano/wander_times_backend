@@ -1,3 +1,5 @@
 class LikeSerializer < ActiveModel::Serializer
-  attributes :id
+  belongs_to :user
+  belongs_to :article
+  attributes :id, :user_id, :article_id, :article
 end

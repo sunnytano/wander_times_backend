@@ -1,21 +1,25 @@
 class Api::V1::AuthController < ApplicationController
-
-    def create
-        user = User.find_by(username: user_params[:username])
-        if user && user.authenticate(user_params[:password])
-            render json: {user: user, token: encode_token(user)}
-        end
+    def login
+      # check if my params contain the entered username and password
+      user = User.find_by(username: params[:username])
+  
+      if user && user.authenticate(params[:password])
+  
+        token = encode_token(user.id)
+  
+        render json: {user: UserSerializer.new(user), token: token}
+  
+        # render json: user
+      else
+        render json: {errors: "You dun goofed!"}
+      end
     end
-
-    def persist
-        if token
-            render json: current_user
-        end
+  
+    def auto_login
+      if session_user
+        render json: session_user
+      else
+        render json: {errors: "Don't touch my cookies!"}
+      end
     end
-
-    private
-
-    def user_params
-        params.permit(:username, :password)
-    end
-end
+end 

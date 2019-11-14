@@ -22,6 +22,7 @@ ActiveRecord::Schema.define(version: 2019_08_22_182911) do
     t.string "url"
     t.string "image"
     t.string "category"
+    t.string "content"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -49,6 +50,7 @@ ActiveRecord::Schema.define(version: 2019_08_22_182911) do
     t.string "username"
     t.string "password_digest"
     t.string "email"
+    t.string "avatar"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
